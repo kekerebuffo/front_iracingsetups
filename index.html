@@ -13,15 +13,11 @@
 
     <!-- Formulario -->
     <form id="setup-form" class="space-y-4">
-      <div>
-        <label class="block font-medium mb-1">Coche</label>
-        <input id="coche" class="w-full border rounded p-2" placeholder="Porsche GT3 Cup" required />
-      </div>
+      <label for="coche">Coche:</label>
+<select id="coche" class="input-field"></select>
 
-      <div>
-        <label class="block font-medium mb-1">Circuito</label>
-        <input id="circuito" class="w-full border rounded p-2" placeholder="Spa (Grand Prix)" required />
-      </div>
+<label for="circuito">Circuito:</label>
+<select id="circuito" class="input-field"></select>
 
       <div>
         <label class="block font-medium mb-1">Tipo de conducción</label>
@@ -82,6 +78,32 @@
         resultEl.textContent = 'Error: ' + err.message;
       }
     });
+
+    document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    const resp = await fetch('https://iracingsetupproject-production.up.railway.app/opciones')
+    const data = await resp.json()
+
+    const cocheSelect = document.getElementById('coche')
+    const circuitoSelect = document.getElementById('circuito')
+
+    data.coches.forEach(c => {
+      const opt = document.createElement('option')
+      opt.value = c
+      opt.textContent = c
+      cocheSelect.appendChild(opt)
+    })
+    data.circuitos.forEach(c => {
+      const opt = document.createElement('option')
+      opt.value = c
+      opt.textContent = c
+      circuitoSelect.appendChild(opt)
+    })
+  } catch (error) {
+    console.error('Error cargando las opciones:', error)
+  }
+})
+
   </script>
 </body>
 </html>
