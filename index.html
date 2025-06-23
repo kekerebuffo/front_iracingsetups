@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>iRacing Setup Builder</title>
+<style>
+  body { font-family: Arial, sans-serif; padding: 2rem; background: #f5f5f5; }
+  .container { max-width: 500px; margin: 0 auto; padding: 2rem; background: white; border-radius: 8px; }
+  label { display: block; margin-top: 1rem; }
+  input, select, button { width: 100%; padding: 0.5rem; margin-top: 0.5rem; }
+  pre { background: #222; color: #0f0; padding: 1rem; border-radius: 8px; overflow-x: auto; margin-top: 2rem; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Consultar Setup</h1>
+
+  <label>Coche:
+    <input id="coche" value="Porsche GT3 Cup">
+  </label>
+
+  <label>Circuito:
+    <input id="circuito" value="Spa (Grand Prix)">
+  </label>
+
+  <label>Tipo de conducción:
+    <input id="tipo_conduccion" value="Conservador">
+  </label>
+
+  <label>Temperatura:
+    <input id="temperatura" type="number" value="21">
+  </label>
+
+  <label>Vueltas:
+    <input id="vueltas" type="number" value="11">
+  </label>
+
+  <button id="consultar">Consultar Setup</button>
+
+  <pre id="resultado"></pre>
+</div>
+
+<script>
+document.getElementById('consultar').addEventListener('click', async () => {
+  const coche = document.getElementById('coche').value;
+  const circuito = document.getElementById('circuito').value;
+  const tipo_conduccion = document.getElementById('tipo_conduccion').value;
+  const temperatura = parseInt(document.getElementById('temperatura').value, 10);
+  const vueltas = parseInt(document.getElementById('vueltas').value, 10);
+
+  const payload = { coche, circuito, tipo_conduccion, temperatura, vueltas };
+  
+  try {
+    const resp = await fetch('https://iracingsetupproject-production.up.railway.app/setup', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+
+    if (!resp.ok) {
+      const errorText = await resp.text();
+      throw new Error(`Error ${resp.status}: ${errorText}`);
+    }
+
+    const data = await resp.json();
+    document.getElementById('resultado').textContent = JSON.stringify(data, null, 2);
+  } catch (error) {
+    document.getElementById('resultado').textContent = 'Error: ' + error.message;
+  }
+});
+</script>
+</body>
+</html>
