@@ -1,64 +1,95 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>iRacing Setup Finder - Landing</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    .custom-egg-radius {
-      border-radius: 31% 69% 50% 50% / 33% 61% 39% 67%;
-      width: 900px;
-      height: 350px;
-    }
-    @font-face {
-      font-family: 'League Spartan';
-      src: url('path/to/league-spartan.woff2') format('woff2');
-    }
-    body {
-      font-family: 'League Spartan', sans-serif;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>iRacing Setup Finder</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['League Spartan', 'sans-serif'],
+                    },
+                    animation: {
+                        'underline-expand': 'underline-expand 0.3s ease-out forwards',
+                    },
+                    keyframes: {
+                        'underline-expand': {
+                            '0%': { 'transform': 'scaleX(0)' },
+                            '100%': { 'transform': 'scaleX(1)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @font-face {
+            font-family: 'League Spartan';
+            src: url('path/to/league-spartan.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+    </style>
 </head>
-<body class="bg-cover bg-center min-h-screen text-white relative" style="background-image: url('assets/landing_bg.svg');">
+<body class="bg-cover bg-center min-h-screen text-white" style="background-image: url('assets/landing_bg.svg');">
 
-  <!-- Navbar -->
-  <nav class="absolute top-12 right-6 md:top-20 md:right-20 p-4 space-x-4 md:space-x-8 font-semibold text-xl md:text-3xl">
-    <a href="#" class="hover:text-gray-300 transition">Home</a>
-    <a href="#" class="hover:text-gray-300 transition">Service</a>
-    <a href="#" class="hover:text-gray-300 transition">About Us</a>
-    <a href="#" class="hover:text-gray-300 transition">Join</a>
-    <a href="#" class="hover:text-gray-300 transition">Sign In</a>
-  </nav>
+    <!-- Navbar con efecto de subrayado animado -->
+    <nav class="fixed top-0 left-0 right-0 bg-black bg-opacity-50 backdrop-blur-sm py-4 px-6 md:absolute md:bg-transparent md:backdrop-blur-none md:top-12 md:right-20 md:py-0 md:px-0 z-50">
+        <div class="flex justify-end space-x-4 md:space-x-8 text-sm md:text-2xl font-semibold">
+            <a href="#" class="relative group">
+                <span class="relative z-10">Home</span>
+                <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gray-300 group-hover:w-full transition-all duration-300"></span>
+            </a>
+            <a href="#" class="relative group">
+                <span class="relative z-10">Service</span>
+                <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gray-300 group-hover:w-full transition-all duration-300"></span>
+            </a>
+            <a href="#" class="relative group">
+                <span class="relative z-10">About Us</span>
+                <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gray-300 group-hover:w-full transition-all duration-300"></span>
+            </a>
+            <a href="#" class="relative group hidden md:inline-block">
+                <span class="relative z-10">Join</span>
+                <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gray-300 group-hover:w-full transition-all duration-300"></span>
+            </a>
+            <a href="#" class="relative group hidden md:inline-block">
+                <span class="relative z-10">Sign In</span>
+                <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gray-300 group-hover:w-full transition-all duration-300"></span>
+            </a>
+        </div>
+    </nav>
 
-  <!-- Contenido central -->
-  <div class="flex flex-col justify-center items-start h-screen px-8 md:px-20 lg:px-32 max-w-4xl ml-4 md:ml-20 lg:ml-52">
-    <div class="mb-8 ml-0 md:ml-32">
-      <p class="text-2xl md:text-3xl font-semibold">Welcome to</p>
-      <h1 class="text-5xl md:text-7xl font-black">iDea</h1>
-    </div>
-    
-    <div class="bg-white bg-opacity-20 custom-egg-radius p-8 md:p-10 max-w-2xl backdrop-blur-sm">
-      <p class="mb-4 md:ml-8 leading-relaxed">
-        Customize every detail of your car<br>
-        Save setups by car, track or weather conditions<br>
-        Access your setups from any device<br>
-        Share your setups with friends or your team
-      </p>
-      <p class="mb-4 md:ml-8 leading-relaxed">
-        Whether you are a beginner or an experienced driver, here you will have your own virtual garage to fine-tune every lap to the max.
-      </p>
-      <p class="md:ml-8 leading-relaxed">
-        Start creating your first setup now and take your driving to the next level.
-      </p>
-    </div>
+    <!-- Contenido principal -->
+    <div class="container mx-auto px-4 md:px-20 pt-56 md:pt-64 flex flex-col justify-start">
+        <div class="mb-8 md:ml-32">
+            <p class="text-2xl md:text-3xl font-semibold">Welcome to</p>
+            <h1 class="text-5xl md:text-7xl font-black mt-2">iDea</h1>
+        </div>
 
-    <!-- Botón -->
-    <div class="mt-12 ml-0 md:ml-32">
-      <a href="setup.html" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-full text-lg shadow-lg transition transform hover:-translate-y-1">
-        Start Now!
-      </a>
+        <div class="bg-white bg-opacity-20 rounded-3xl p-6 md:p-10 max-w-2xl backdrop-blur-sm">
+            <p class="mb-4 text-lg md:text-xl">
+                Customize every detail of your car<br>
+                Save setups by car, track or weather conditions<br>
+                Access your setups from any device<br>
+                Share your setups with friends or your team
+            </p>
+            <p class="mb-4 text-lg md:text-xl">
+                Whether you are a beginner or an experienced driver, here you will have your own virtual garage to fine-tune every lap to the max.
+            </p>
+            <p class="text-lg md:text-xl">
+                Start creating your first setup now and take your driving to the next level.
+            </p>
+        </div>
+
+        <!-- Botón -->
+        <div class="mt-12 flex justify-center md:justify-start md:ml-32">
+            <a href="index.html" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-full text-lg shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                Start Now!
+            </a>
+        </div>
     </div>
-  </div>
 
 </body>
 </html>
