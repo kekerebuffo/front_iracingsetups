@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>iRacing Setup Finder - Landing</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .custom-egg-radius {
+      border-radius: 31% 69% 50% 50% / 33% 61% 39% 67%;
+      width: 900px;
+      height: 350px;
+    }
+    @font-face {
+      font-family: 'League Spartan';
+      src: url('path/to/league-spartan.woff2') format('woff2');
+    }
+    body {
+      font-family: 'League Spartan', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-cover bg-center min-h-screen text-white relative" style="background-image: url('assets/landing_bg.svg');">
+
+  <!-- Navbar -->
+  <nav class="absolute top-12 right-6 md:top-20 md:right-20 p-4 space-x-4 md:space-x-8 font-semibold text-xl md:text-3xl">
+    <a href="#" class="hover:text-gray-300 transition">Home</a>
+    <a href="#" class="hover:text-gray-300 transition">Service</a>
+    <a href="#" class="hover:text-gray-300 transition">About Us</a>
+    <a href="#" class="hover:text-gray-300 transition">Join</a>
+    <a href="#" class="hover:text-gray-300 transition">Sign In</a>
+  </nav>
+
+  <!-- Contenido central -->
+  <div class="flex flex-col justify-center items-start h-screen px-8 md:px-20 lg:px-32 max-w-4xl ml-4 md:ml-20 lg:ml-52">
+    <div class="mb-8 ml-0 md:ml-32">
+      <p class="text-2xl md:text-3xl font-semibold">Welcome to</p>
+      <h1 class="text-5xl md:text-7xl font-black">iDea</h1>
+    </div>
+    
+    <div class="bg-white bg-opacity-20 custom-egg-radius p-8 md:p-10 max-w-2xl backdrop-blur-sm">
+      <p class="mb-4 md:ml-8 leading-relaxed">
+        Customize every detail of your car<br>
+        Save setups by car, track or weather conditions<br>
+        Access your setups from any device<br>
+        Share your setups with friends or your team
+      </p>
+      <p class="mb-4 md:ml-8 leading-relaxed">
+        Whether you are a beginner or an experienced driver, here you will have your own virtual garage to fine-tune every lap to the max.
+      </p>
+      <p class="md:ml-8 leading-relaxed">
+        Start creating your first setup now and take your driving to the next level.
+      </p>
+    </div>
+
+    <!-- Botón -->
+    <div class="mt-12 ml-0 md:ml-32">
+      <a href="setup.html" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-full text-lg shadow-lg transition transform hover:-translate-y-1">
+        Start Now!
+      </a>
+    </div>
+  </div>
+
+</body>
+</html>
